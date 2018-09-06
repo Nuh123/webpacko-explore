@@ -1,0 +1,27 @@
+{
+  "name": "webpacko-explore",
+  "version": "1.0.0",
+  "description": "webpack学习记录",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuh123/webpacko-explore.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Nuh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nuh123/webpacko-explore/issues"
+  },
+  "homepage": "https://github.com/Nuh123/webpacko-explore#readme"
+}
