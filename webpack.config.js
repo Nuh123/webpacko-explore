@@ -31,6 +31,20 @@ module.exports = {
         // chunkhash  代码块hash，主要是利用浏览器缓存，尽可能小的更新chunk。根据不同入口形成不同的代码chunck，只要对应入口的内容没有改变，chunckhash不变。
         // name 对应的entry的key
         // id
-        filename: '[name]-[chunkhash].js'
+        filename: '[name].js'
+    },
+    // loader 特定格式的文档解析器。
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                // loader 执行顺序是从后往前
+                // style-loader 从js中提取css，并把它放到html中去。
+                // css-loader 把css的内容加到js当中去。
+                // css in js大概就是
+                loader: ['style-loader','css-loader']
+                
+            },
+        ]
     }
 }
