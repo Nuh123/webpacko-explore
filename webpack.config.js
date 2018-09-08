@@ -106,6 +106,15 @@ module.exports = {
             }
         ]
     },
+
+    // 快速关闭source-map  或者mode模式为开发时就是默认开启
+    // source—map为显示开启
+    // 具体键值有很多，详见文档。
+    // 生产环境不建议开启source-map，正确设置mode即可。
+    // 推荐配置
+    // 开发  cheap-module-eval-sourceo-map
+    // 生产  cheap-module-source-map
+    devtool: 'cheap-module-eval-sourceo-map',
     
     // 插件 额外工作 作用于整个生命周期
     // 插件使用前需要require引入，具体的使用看对应插件的文档，一般为实例化。

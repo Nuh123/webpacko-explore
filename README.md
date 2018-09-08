@@ -83,3 +83,6 @@ autoprefixer插件，实现前缀添加的工具。
 1. `HTML文件的自动化插入`
 HTML-webpack-plugin  插件有一系列配置项
 
+devtool字段
+
+source-map相关设置，详情见git
