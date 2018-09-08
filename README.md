@@ -78,4 +78,8 @@ autoprefixer插件，实现前缀添加的工具。
 
 
 
+常见的plugins
+
+1. `HTML文件的自动化插入`
+HTML-webpack-plugin  插件有一系列配置项
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 这个地方的模版插入格式和变量名需要格外注意，固定写法。 -->
+    <!--  htmlWebpackPlugin这个变量名和config里的没有关系-->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <p class="test">test</p>
+    <div>
+        <p>test</p>
+    </div>
+    <div class="image"></div>
+    <!-- 早先index.html放置在根目录下，主要是习惯了vue那种官方脚手架配置好的文件目录，刚在用到处理文件路径的问题时，打包前后路径不变，所以导致
+    找不到资源的情况，所以将位置移动。 -->
+    <!-- 目前有两种解决思路，继续在根目录，
+    1. 对所有路径做统一处理     放弃   路径始终多一层dist，在部署时完全不存在
+    2. 将根目录下的html文件 ‘复制’一份到dist目录   放弃   不同目录位置下对main.js的引用不一致，但这个难度低很多，‘复制’时只涉及修改主js的路径。 
+    3. 目前采用的方案是关掉clean-webpack-plugin，直接挪到dist下，后面可用html-webpack-plugin解决该问题-->
+    <!-- 采用自动插入 -->
+    <!-- <script src="./index.js"></script> -->
+</body>
+</html>

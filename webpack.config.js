@@ -2,6 +2,9 @@
 const path = require('path')
 // 这个大驼峰法的原因是模块暴露的名字就是这样，结构只能照搬。
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const HtmlWebpackplugin    = require('html-webpack-plugin')
+
+
 console.log(CleanWebpackPlugin)
 module.exports = {
     // 不常用字段，指定上下文，为相对路径的依据，默认为根目录即process.cwd()。
@@ -20,7 +23,7 @@ module.exports = {
     // 多入口一定是多出口，多入口情况下不支持自定义指定出口文件名。
     entry: {
         index: './src/index.js',
-        other: './src/other.js'
+        // other: './src/other.js'
     },
     // 出口，最终编译打包完的东西的存放设置。对象形式，包括路径和文件名。
     output: {
@@ -107,6 +110,19 @@ module.exports = {
     // 插件 额外工作 作用于整个生命周期
     // 插件使用前需要require引入，具体的使用看对应插件的文档，一般为实例化。
     plugins: [
-        // new CleanWebpackPlugin()
+        // 清除dist下的旧文件   -- 所有的
+        new CleanWebpackPlugin(),
+        // 自动导入html文件，且导入打包好的bundle
+        // 问题 多入口情况下这种模版插入会插进一个html中
+        new HtmlWebpackplugin({
+            //  页面的标题 
+            // 使用时需要特殊设置模版文件的title
+            // 支持ejs的语法
+            title   : '测试',
+            template: './src/index.html',
+            filename: 'index.html',
+            // minify:  压缩 
+            // 其它字段后续再拓展
+        })
     ]
 }
