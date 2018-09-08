@@ -73,15 +73,31 @@ module.exports = {
                     'less-loader'
                 ]  
             },
+            // {
+            //     test: /\.(png)|(jpg?g) |(gif)$/,
+            //     use : {
+            //         loader : 'file-loader',
+            //         options: {
+            //             // 特殊占位符
+            //             // [ext]   文件拓展名 但实测过，重命名的话必须显示调用拓展名占位符。
+            //             name      : '[name]-[ext]-[hash:4].[ext]',
+            //             outputPath: './images/'
+            //         }
+            //     }
+            // },
             {
                 test: /\.(png)|(jpg?g) |(gif)$/,
                 use : {
-                    loader : 'file-loader',
+                    loader : 'url-loader',
                     options: {
                         // 特殊占位符
                         // [ext]   文件拓展名 但实测过，重命名的话必须显示调用拓展名占位符。
                         name      : '[name]-[ext]-[hash:4].[ext]',
-                        outputPath: './images/'
+                        outputPath: './images/',
+                        // 单位字节，也就是1024代表1k
+                        // 字段表示小于下面数据的使用base64来处理图片
+                        // 一定大小下，一般为2kb的图片使用bade64更好，太大的话增加的base64文本也是负担。
+                        limit: 29*1024
                     }
                 }
             }

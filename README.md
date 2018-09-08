@@ -72,6 +72,9 @@ autoprefixer插件，实现前缀添加的工具。
 4. `资源处理类（主要是图片） --  file-loader`
 就是统一管理图片类资源，包括打包后的命名、位置等。
 
+5. `加强版file-loader  -- url-loader`
+基本全覆盖file-loader功能，且能做一些额外的事。
+尤其是base64处理图片，一般小于2kb（没有绝对标准）的图
 
 
 
