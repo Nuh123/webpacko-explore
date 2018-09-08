@@ -6,4 +6,12 @@ import css from './css/index.less'
 // vue react 中也有对应的解决方案
 console.log(css)
 // 因为webpack基于node，所以只认识js和json格式，是没法处理css格式的
-console.log('hello webpack')
+console.log('hello webpack') 
+
+
+import pic from './image/demo.png'
+var img     = new Image()
+    img.src = pic
+    console.log(pic)
+var el = document.getElementsByClassName('image')[0]
+el.append(img)

@@ -52,9 +52,27 @@ loader和plugins对比
 常见loader
 
 1. `css文件所需的loader`
-css-loader  提取css文件中内容，再‘推到’js当中去。
+css-loader  提取css文件中内容，再‘推到’js当中去。可通过配置参数实现css模块化。
 style-loader 将被提取到js中的css再次提取出来，并插入到html当中去。
 
 注：实际开发中css不会这么处理，起码使用less这种，还会单独合并css，并插入。
+
+2. `‘现代’css写法 -- less-loader`
+这里涉及一个顺序问题，less => css => style,但在loader配置时刚好反过来，具体原因看config文件。
+这个loader的作用就是读取less文件中的css。
+实测过一点，less不需要css-loader解析，也就是less-loader能完成css的工作。
+但要实现css模块化还必须依赖css-loader。
+
+3. `css前处理器 -- postcss-loader`
+对css做一些处理，如压缩、添加浏览器前缀等
+autoprefixer插件，实现前缀添加的工具。
+具体使用见git记录
+其它想起来再写
+
+4. `资源处理类（主要是图片） --  file-loader`
+就是统一管理图片类资源，包括打包后的命名、位置等。
+
+
+
 
 

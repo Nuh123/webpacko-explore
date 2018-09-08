@@ -60,25 +60,37 @@ module.exports = {
                     },
                     // 每一个对应的loader也可配置为对象形式
                     // 该loader开启了css模块化 简单讲就是抽取公共css。
-                    {
-                        loader : 'css-loader',
-                        options: {
-                            modules: true
-                        }
-                    },
+                    // {
+                    //     loader : 'css-loader',
+                    //     options: {
+                    //         modules: true
+                    //     }
+                    // },
+                    // 这里发现一个问题，less不需要css-loader。案例中简单的less可以正常打包style-loader必备。
                     {
                         loader: 'postcss-loader'
                     },
                     'less-loader'
-                ]
-                
+                ]  
             },
+            {
+                test: /\.(png)|(jpg?g) |(gif)$/,
+                use : {
+                    loader : 'file-loader',
+                    options: {
+                        // 特殊占位符
+                        // [ext]   文件拓展名 但实测过，重命名的话必须显示调用拓展名占位符。
+                        name      : '[name]-[ext]-[hash:4].[ext]',
+                        outputPath: './images/'
+                    }
+                }
+            }
         ]
     },
     
     // 插件 额外工作 作用于整个生命周期
     // 插件使用前需要require引入，具体的使用看对应插件的文档，一般为实例化。
     plugins: [
-        new CleanWebpackPlugin()
+        // new CleanWebpackPlugin()
     ]
 }
