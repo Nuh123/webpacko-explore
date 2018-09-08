@@ -66,6 +66,9 @@ module.exports = {
                             modules: true
                         }
                     },
+                    {
+                        loader: 'postcss-loader'
+                    },
                     'less-loader'
                 ]
                 
