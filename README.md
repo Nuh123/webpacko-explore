@@ -8,6 +8,7 @@ webpack学习记录
 1. 浏览器端无法模块化
 2. 浏览器无法使用最新的api
 3. 前端工程化的发展中出现了一些新的‘格式’，浏览器也无法识别（只识别HTNL、css、js等）
+4. 还可实现自动化和工程化
 
 
 
@@ -19,7 +20,7 @@ webpack基础
 chunk是代码块的意思
 bundle是最终资源合集的意思
 1个chunk可以是多个模块构成
-这部分在后面代码分割的时候会再讲
+这部分在后面再研究（代码分割）
 **没有比较清楚的明白，暂时不细究。**
 4. webpack只认识js和json格式的文件，如需识别其它格式，需配置对应的loader。
 
@@ -29,7 +30,7 @@ webpack 安装
 1. 推荐项目安装。全局安装不会经常更新，局限了版本。
 2. webpack4版本需要单独安装命令行
 3. webpack可以通过@制定版本，不过属于node（npm）基础
-4. webpack -v 可检查安装成功  还有npx webpack -v
+4. webpack -v 可检查安装成功（全局）  未全局安装下只能npx webpack -v（会查找node_moudle => bin => webpack包）
 
 
 webpack使用流程

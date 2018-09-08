@@ -45,7 +45,29 @@ module.exports = {
                 // style-loader 从js中提取css，并把它放到html中去。
                 // css-loader 把css的内容加到js当中去。
                 // css in js大概就是
-                loader: ['style-loader','css-loader']
+                use: ['style-loader','css-loader']
+                
+            },
+            {
+                test: /\.less$/,
+                // loader 执行顺序是从后往前
+                // 这里再强调下loader的顺序问题
+                // less-loader  将less变为css，所以webpack处理还是需要依赖对应的cssloaser
+                // css in js大概就是
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    // 每一个对应的loader也可配置为对象形式
+                    // 该loader开启了css模块化 简单讲就是抽取公共css。
+                    {
+                        loader : 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    },
+                    'less-loader'
+                ]
                 
             },
         ]
