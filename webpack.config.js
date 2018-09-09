@@ -116,7 +116,7 @@ module.exports = {
     // 生产  cheap-module-source-map
     devtool: 'cheap-module-eval-sourceo-map',
     
-    // 开发用小型服务器
+    // 开发用小型服务器,基于express
     // 需注意，热更新对于配置类的修改是无能为力的。
     devServer: {
         // 设置服务根目录，默认指向dist，且指向目录下的index.html
@@ -127,12 +127,23 @@ module.exports = {
         // 是否在浏览器中打开
         open: true,
         // 代理器或拦截器，主要处理网络请求类问题
-        proxy: {
-            '/api': {
-                // 转发或者代理的目标  注意在实际请求处地址的写法要配合这里的转发规则。
-                target: 'http://localhost:3000'
-            }
-        }
+        // proxy: {
+        //     '/api': {
+        //         // 转发或者代理的目标  注意在实际请求处地址的写法要配合这里的转发规则。
+        //         target: 'http://localhost:3000'
+        //     }
+        // },
+        // before()和after()钩子函数就是在一定阶段会执行的函数，是webpack-dev-server中间件提供的。
+        // 可以用来mock数据，但这种mock比较低效，仅仅是接口级别的mock，不是数据级别的，且目前的还是同源的接口，不涉及跨域。
+        before(app,server) {
+            // 此时不涉及什么跨域问题，接口是在8080端口下的
+            app.get('/api/info',(req,res) => {
+                res.json({
+                    test: 'hello world'
+                })
+                console.log('数据被请求成功')
+            })
+        },
 
     },
 
