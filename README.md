@@ -86,6 +86,9 @@ HTML-webpack-plugin  插件有一系列配置项
 2. `自动清理dist目录的旧文件 ---  防缓存`
 clean-webpack-plugin 基本上无需配置
 
+3. `dev-server热更新插件`
+webpack.HotModuleReplacementPlugin webpack自带插件，实例化过程中基本不需要配置，但需要在der-server里设置相应的属性。
+
 devtool字段
 
 source-map相关设置，详情见git
@@ -97,3 +100,5 @@ webpack-dev-server
 `port`  指定开发服务器（打包后项目启动）的端口
 `porxy`  对于请求类的问题做额外处理，主要是跨域问题。
 `bedore()和after()` 两个钩子函数，顾名思义在dev-server的特定阶段触发，可用来mock接口级别的一些问题。
+`hot` 热更新相关属性
+`hotonly` 热更新相关属性，和上面的区别理解的不是很明白。

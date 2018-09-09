@@ -3,6 +3,7 @@ const path = require('path')
 // 这个大驼峰法的原因是模块暴露的名字就是这样，结构只能照搬。
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackplugin    = require('html-webpack-plugin')
+const webpack              = require('webpack')
 
 
 console.log(CleanWebpackPlugin)
@@ -144,7 +145,23 @@ module.exports = {
                 console.log('数据被请求成功')
             })
         },
-
+        // 热更新  准确的讲应该是热模块替换（更新）大名鼎鼎的HMR
+        // 这个的使用步骤相对较多，安装webpack自带的插件后还需要在dev-server里面设置对应的属性
+        // 这两个属性理解的不是很透彻，需要下来再研究研究。
+        // 有几种情况没保存后会更新，但这个更新会有几种情况，浏览器完全刷新（用户行为清除），
+        // hmr只替换对应的模块，用户行为保留，修改的代码生效。
+        // 完全无视，但是这样对开发十分不友好。
+        // 另抽离出的css文件对hmr也十分不友好，所以开发时不建议抽离css，即使用mini-css-extract-plugin插件（loader）。
+        // 还有hmr除对css抽离不友好以外，还对contenthash和chunck不友好
+        // 另对js的热更新以下也是不起作用的，但各大框架有自己对这部分支持的方案，以loader居多。
+        // if(moduke.hot){
+        //      module.hot.accept('./src/*',function() {})
+        // }
+        // 这样的处理显然是十分麻烦的
+        // 默认开启
+        hot: true,
+        // 即便hmr没有生效，也不在保存文件时刷新浏览器。
+        hotonly: true,
     },
 
     // 插件 额外工作 作用于整个生命周期
@@ -163,6 +180,7 @@ module.exports = {
             filename: 'index.html',
             // minify:  压缩 
             // 其它字段后续再拓展
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
