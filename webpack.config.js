@@ -116,6 +116,18 @@ module.exports = {
     // 生产  cheap-module-source-map
     devtool: 'cheap-module-eval-sourceo-map',
     
+    // 开发用小型服务器
+    devServer: {
+        // 设置服务根目录，默认指向dist，且指向目录下的index.html
+        // 可以是绝对路径或相对路径
+        contentBase: path.resolve(__dirname,'./dist'),
+        // 端口号
+        port: 8080,
+        // 是否在浏览器中打开
+        open: true
+
+    },
+
     // 插件 额外工作 作用于整个生命周期
     // 插件使用前需要require引入，具体的使用看对应插件的文档，一般为实例化。
     plugins: [

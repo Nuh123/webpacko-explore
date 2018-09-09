@@ -86,3 +86,6 @@ HTML-webpack-plugin  插件有一系列配置项
 devtool字段
 
 source-map相关设置，详情见git
+
+webpack-dev-server
+基于express的一个小的小型服务器，提高开发效率。添加新命令后，走dev的话原先dist文件里面的东西会没掉，但是不影响开发，强行走内存。带热更新。
