@@ -12,6 +12,17 @@ console.log('hello webpack')
 import pic from './image/demo.png'
 var img     = new Image()
     img.src = pic
-    console.log(pic)
+    // console.log(pic)
 var el = document.getElementsByClassName('image')[0]
 el.append(img)
+
+
+import axios from 'axios'
+
+axios.get('/api/info')
+.then (res => {
+    console.log(res.data)
+})
+.catch(err => {
+    console.log('出错了，错误为'+ err)
+})

@@ -117,6 +117,7 @@ module.exports = {
     devtool: 'cheap-module-eval-sourceo-map',
     
     // 开发用小型服务器
+    // 需注意，热更新对于配置类的修改是无能为力的。
     devServer: {
         // 设置服务根目录，默认指向dist，且指向目录下的index.html
         // 可以是绝对路径或相对路径
@@ -124,7 +125,14 @@ module.exports = {
         // 端口号
         port: 8080,
         // 是否在浏览器中打开
-        open: true
+        open: true,
+        // 代理器或拦截器，主要处理网络请求类问题
+        proxy: {
+            '/api': {
+                // 转发或者代理的目标  注意在实际请求处地址的写法要配合这里的转发规则。
+                target: 'http://localhost:3000'
+            }
+        }
 
     },
 

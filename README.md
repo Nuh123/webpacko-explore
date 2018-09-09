@@ -83,9 +83,16 @@ autoprefixer插件，实现前缀添加的工具。
 1. `HTML文件的自动化插入`
 HTML-webpack-plugin  插件有一系列配置项
 
+2. `自动清理dist目录的旧文件 ---  防缓存`
+clean-webpack-plugin 基本上无需配置
+
 devtool字段
 
 source-map相关设置，详情见git
 
 webpack-dev-server
 基于express的一个小的小型服务器，提高开发效率。添加新命令后，走dev的话原先dist文件里面的东西会没掉，但是不影响开发，强行走内存。带热更新。
+其中较为常见的功能如下
+open  自动在浏览器打开打包后的文件
+port  指定开发服务器（打包后项目启动）的端口
+porxy  对于请求类的问题做额外处理，主要是跨域问题。
