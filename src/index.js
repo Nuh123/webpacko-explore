@@ -26,3 +26,5 @@ axios.get('/api/info')
 .catch(err => {
     console.log('出错了，错误为'+ err)
 })
+
+const arrtest = [new Promise(() => {}),new Promise(() => {})]
