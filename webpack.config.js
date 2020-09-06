@@ -1,5 +1,8 @@
 // node的文件路径处理模块
 const path = require('path')
+// 这个大驼峰法的原因是模块暴露的名字就是这样，结构只能照搬。
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+console.log(CleanWebpackPlugin)
 module.exports = {
     // 不常用字段，指定上下文，为相对路径的依据，默认为根目录即process.cwd()。
     context: process.cwd(),
@@ -46,5 +49,10 @@ module.exports = {
                 
             },
         ]
-    }
+    },
+    // 插件 额外工作 作用于整个生命周期
+    // 插件使用前需要require引入，具体的使用看对应插件的文档，一般为实例化。
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
 }
